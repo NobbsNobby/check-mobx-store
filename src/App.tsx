@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+import { useMst } from "./store";
+import {observer} from "mobx-react-lite";
+
+const UserComponent = observer(({user}: any) => {
+  return (
+    <div>
+      <h2>{user.getName}</h2>
+      <div>
+        <input value={user.email} onChange={(e) => {
+          user.changeEmail(e.target.value)
+        }} />
+        <p>{user.phone}</p>
+        <p>{user.website}</p>
+      </div>
+    </div>
+  );
+});
 
 function App() {
+  const { users } = useMst();
+  // @ts-ignore
+  useEffect(() => {
+    users.fetchUsers();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {users.users.map((i) => (
+        <UserComponent key={i.id} user={i} />
+      ))}
     </div>
   );
 }
 
-export default App;
+export default observer(App);

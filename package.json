@@ -10,6 +10,10 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
+    "axios": "^0.27.2",
+    "mobx": "^6.6.0",
+    "mobx-react-lite": "^3.4.0",
+    "mobx-state-tree": "^5.1.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
@@ -39,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2",
+    "reactotron-mst": "^3.1.4",
+    "reactotron-react-js": "^3.3.7"
   }
 }
